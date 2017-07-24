@@ -4,13 +4,20 @@
 package Test;
 
 import MoreOrLess.Model;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
+
 import java.lang.Exception;
 
 public class TestModel {
     private static Model m;
+
+    @Rule
+    public final ExpectedException exp = ExpectedException.none();
+
+    @Rule
+    public Timeout time = new Timeout(1000);
 
     @BeforeClass
     public static void runT(){
@@ -41,8 +48,19 @@ public class TestModel {
         Assert.assertEquals(answer, "Yes");
     }
 
-    @Test(expected = Exception.class)
+    //@Test(expected = Exception.class)
+    @Ignore
+    @Test
     public void testGiveAnswerExc () {
+        exp.expect(Exception.class);
         m.giveAnswer(0,0);
+    }
+
+    @Ignore
+    @Test
+    public void testN(){
+        while (true) {
+
+        }
     }
 }
