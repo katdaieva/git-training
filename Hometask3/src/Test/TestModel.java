@@ -12,8 +12,6 @@ public class TestModel {
     public void testRand() {
         Model m = new Model();
         int secretNumber  = m.rand(0,100);
-        if ((secretNumber >= 100) | (secretNumber <= 0)) {
-            Assert.fail();
-        }
+        if ((secretNumber >= 100) | (secretNumber <= 0)) Assert.fail();
     }
 }

@@ -10,8 +10,12 @@ public class View {
         System.out.println(message);
     }
     public void printTask (int RAND_MIN, int RAND_MAX) {
-        System.out.println("new range: "+RAND_MIN + ' '+ RAND_MAX);
+        System.out.println("New range: "+RAND_MIN + ' '+ RAND_MAX);
     }
     public static final String INPUT_INT_DATA = "Guess the number!";
+    public static final String MORE_THAN_SECRET = " > secretNumber";
+    public static final String LESS_THAN_SECRET = " < secretNumber";
+    public static final String VICTORY = "Finally! You guessed!";
     public static final String WRONG_DATA = "Incorrect data, input the number please!";
+    public static final String OUT_OF_RANGE = "Out of range!";
 }

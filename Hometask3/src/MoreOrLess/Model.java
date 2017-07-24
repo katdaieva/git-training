@@ -11,14 +11,10 @@ public class Model {
     public int secretNumber;
     public int newNumber;
 
-    public boolean giveAnswer (int newNumber, int secretNumber) {
-        if (newNumber == secretNumber) return true;
-        else return false;
+    public String giveAnswer (int newNumber, int secretNumber) {
+        if (newNumber == secretNumber) return "Yes";
+            else if (newNumber > secretNumber) return "More";
+            else return "Less";
     }
-    public String comparing (int newNumber, int secretNumber) {
-        if (newNumber < secretNumber) return "left";
-        else return "right";
-    }
-
 }
 

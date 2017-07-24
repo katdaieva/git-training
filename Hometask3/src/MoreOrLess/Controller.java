@@ -3,7 +3,7 @@
  */
 package MoreOrLess;
 
-import java.util.Scanner;
+        import java.util.Scanner;
 
 public class Controller {
     // Constructor
@@ -11,39 +11,45 @@ public class Controller {
     View view;
 
     public Controller(Model model, View view) {
-        this.model  = model;
+        this.model = model;
         this.view = view;
     }
 
     // The Work method
-    public void processUser(){
+    public void processUser() {
         Scanner sc = new Scanner(System.in);
         view.RAND_MIN = 0;
         view.RAND_MAX = 100;
-        model.secretNumber = model.rand(view.RAND_MIN,view.RAND_MAX);
+        model.secretNumber = model.rand(view.RAND_MIN, view.RAND_MAX);
         view.printTask(view.RAND_MIN, view.RAND_MAX);
         model.newNumber = inputIntValueWithScanner(sc);
-        while (model.giveAnswer(model.newNumber, model.secretNumber) == false) {
-            if (model.comparing(model.newNumber, model.secretNumber) == "left") {
+        while (model.giveAnswer(model.newNumber, model.secretNumber) != "Yes") {
+            if (model.giveAnswer(model.newNumber, model.secretNumber) == "More") {
                 view.RAND_MIN = model.newNumber;
-            } else view.RAND_MAX = model.newNumber;
+                view.printMessage(model.newNumber + view.MORE_THAN_SECRET);
+            } else {
+                view.RAND_MAX = model.newNumber;
+                view.printMessage(model.newNumber + view.LESS_THAN_SECRET);
+            }
             view.printTask(view.RAND_MIN, view.RAND_MAX);
             model.newNumber = inputIntValueWithScanner(sc);
         }
-        view.printMessage("You've done!");
+        view.printMessage(view.VICTORY);
     }
 
     // The Utility methods
     public int inputIntValueWithScanner(Scanner sc) {
         view.printMessage(view.INPUT_INT_DATA);
-        while (! sc.hasNextInt()) {
+        while (!sc.hasNextInt()) {
             view.printMessage(view.WRONG_DATA);
-        };
-        /*while ((sc.nextInt() > view.RAND_MAX) || (sc.nextInt() < view.RAND_MIN)) {
-            view.printMessage("Please, don't forget about your range!");
-        }*/
+        }
+        ;
+        if (((sc.nextInt()) <= view.RAND_MIN) | (sc.nextInt()) >= view.RAND_MAX) {
+            view.printMessage(view.OUT_OF_RANGE);
+            view.printTask(view.RAND_MIN, view.RAND_MAX);
+            inputIntValueWithScanner(sc);
+        } else return sc.nextInt();
         return sc.nextInt();
-
-    }
+    };
 
 }
