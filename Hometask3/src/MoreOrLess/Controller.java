@@ -44,6 +44,10 @@ public class Controller {
             view.printMessage(view.WRONG_DATA);
             sc.next();
         }
+        /*while ((sc.nextInt()<= view.RAND_MIN)||(sc.nextInt() >= view.RAND_MAX)) {
+            view.printMessage(view.OUT_OF_RANGE);
+            //if ((sc.nextInt()<= view.RAND_MIN)||(sc.nextInt() >= view.RAND_MAX)) sc.next();
+        }*/
         return sc.nextInt();
 
     }
