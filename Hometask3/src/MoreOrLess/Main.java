@@ -8,7 +8,7 @@ public class Main {
         //Initialization
         Model model = new Model();
         View view = new View();
-        Controller controller = new Controller(model,view  );
+        Controller controller = new Controller(model,view );
 
         //Run
         controller.processUser();

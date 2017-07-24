@@ -3,7 +3,7 @@
  */
 package MoreOrLess;
 
-        import java.util.Scanner;
+import java.util.Scanner;
 
 public class Controller {
     // Constructor
@@ -25,10 +25,10 @@ public class Controller {
         model.newNumber = inputIntValueWithScanner(sc);
         while (model.giveAnswer(model.newNumber, model.secretNumber) != "Yes") {
             if (model.giveAnswer(model.newNumber, model.secretNumber) == "More") {
-                view.RAND_MIN = model.newNumber;
+                view.RAND_MAX = model.newNumber;
                 view.printMessage(model.newNumber + view.MORE_THAN_SECRET);
             } else {
-                view.RAND_MAX = model.newNumber;
+                view.RAND_MIN = model.newNumber;
                 view.printMessage(model.newNumber + view.LESS_THAN_SECRET);
             }
             view.printTask(view.RAND_MIN, view.RAND_MAX);
@@ -42,14 +42,11 @@ public class Controller {
         view.printMessage(view.INPUT_INT_DATA);
         while (!sc.hasNextInt()) {
             view.printMessage(view.WRONG_DATA);
+            sc.next();
         }
-        ;
-        if (((sc.nextInt()) <= view.RAND_MIN) | (sc.nextInt()) >= view.RAND_MAX) {
-            view.printMessage(view.OUT_OF_RANGE);
-            view.printTask(view.RAND_MIN, view.RAND_MAX);
-            inputIntValueWithScanner(sc);
-        } else return sc.nextInt();
         return sc.nextInt();
-    };
+
+    }
 
 }
+
