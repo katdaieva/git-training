@@ -5,14 +5,15 @@ package Test;
 
 import MoreOrLess.Model;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import java.lang.Exception;
 
 public class TestModel {
-    private Model m;
+    private static Model m;
 
-    @Before
-    public void runT(){
+    @BeforeClass
+    public static void runT(){
         m = new Model();
     }
 
@@ -38,5 +39,10 @@ public class TestModel {
     public void testGiveVictoryAnswer() {
         String answer = m.giveAnswer(80,80);
         Assert.assertEquals(answer, "Yes");
+    }
+
+    @Test(expected = Exception.class)
+    public void testGiveAnswerExc () {
+        m.giveAnswer(0,0);
     }
 }
