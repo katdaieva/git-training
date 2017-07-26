@@ -12,6 +12,6 @@ public class Flower extends Plant {
     }
 
     public String toString() {
-        return this.name + ": there " + (isMultiFlower == false ? "is one one flower." : "are more flowers!");
+        return this.name + ": there " + (isMultiFlower == false ? "is one flower." : "are more flowers!");
     }
 }
