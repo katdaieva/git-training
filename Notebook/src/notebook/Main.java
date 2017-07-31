@@ -1,3 +1,5 @@
+package notebook;
+
 /**
  * The Enter point
  */
@@ -10,6 +12,5 @@ public class Main {
 
         //Run
         controller.processUser();
-        controller.showResult();
     }
 }
