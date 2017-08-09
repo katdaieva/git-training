@@ -8,6 +8,14 @@ public class PrototypePattern {
 
         Human copy = (Human) original.copy();
         System.out.println(copy);
+
+        HumanFactory factory = new HumanFactory(copy);
+        Human h1 = factory.makeCopy();
+        System.out.println(h1);
+
+        factory.setPrototype(new Human(30, "Valerka"));
+        Human h2 = factory.makeCopy();
+        System.out.println(h2);
     }
 }
 
@@ -34,5 +42,19 @@ class Human implements Copyable {
     public Object copy() {
         Human copy = new Human(age, name);
         return copy;
+    }
+}
+
+class HumanFactory {
+    Human human;
+
+    public HumanFactory(Human human) {
+        setPrototype(human);
+    }
+    public void setPrototype(Human human) {
+        this.human = human;
+    }
+    Human makeCopy() {
+        return (Human) human.copy();
     }
 }
