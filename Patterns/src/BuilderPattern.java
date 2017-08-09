@@ -3,11 +3,16 @@
  */
 public class BuilderPattern {
     public static void main(String[] args) {
-        Car car = new CarBuilder()
+/*        Car car = new CarBuilder()
                 .buildMake("Mercedes")
                 .buildTransmission(Transmission.AUTO)
                 .buildMaxSpeed(280)
                 .build();
+        System.out.println(car);*/
+
+        Director director = new Director();
+        director.setBuilder(new FordMondeoBuilder());
+        Car car = director.BuildCar();
         System.out.println(car);
     }
 }
@@ -40,6 +45,59 @@ class Car {
     }
 }
 
+abstract class CarBuilder {
+    Car car;
+
+    void createCar() {car = new Car();}
+    abstract void buildMake();
+    abstract void buildTransmission();
+    abstract void buildMaxSpeed();
+    Car getCar() {
+        return car;
+    }
+}
+
+class FordMondeoBuilder extends CarBuilder {
+    void buildMake() {
+        car.setMake("Ford Mondeo");
+    }
+    void buildTransmission() {
+        car.setTransmission(Transmission.AUTO);
+    }
+    void buildMaxSpeed() {
+        car.setMaxSpeed(260);
+    }
+}
+
+class SubaruBuilder extends CarBuilder {
+    void buildMake() {
+        car.setMake("Subaru");
+    }
+    void buildTransmission() {
+        car.setTransmission(Transmission.MANUAL);
+    }
+    void buildMaxSpeed() {
+        car.setMaxSpeed(320);
+    }
+}
+
+class Director {
+    CarBuilder builder;
+
+    void setBuilder(CarBuilder b) {
+        builder = b;
+    }
+    Car BuildCar() {
+        builder.createCar();
+        builder.buildMake();
+        builder.buildTransmission();
+        builder.buildMaxSpeed();
+        Car car = builder.getCar();
+        return car;
+    }
+}
+
+/*
 class CarBuilder {
     String m = "Default";
     Transmission t = Transmission.MANUAL;
@@ -65,4 +123,4 @@ class CarBuilder {
         car.setMaxSpeed(s);
         return car;
     }
-}
+}*/
