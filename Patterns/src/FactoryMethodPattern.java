@@ -5,8 +5,17 @@ import java.util.Date;
  */
 public class FactoryMethodPattern {
     public static void main(String[] args) {
-        Watch watch = new DigitalWatch();
+        WatchMaker maker = getMakerByName("Digital");
+        Watch watch = maker.createWatch();
         watch.showTime();
+    }
+
+    public static WatchMaker getMakerByName (String maker) {
+        if (maker.equals("Digital"))
+            return new DigitalWatchMaker();
+        else if (maker.equals("Rome"))
+            return new RomeWatchMaker();
+        throw new RuntimeException("Не поддерживаемая производственная линия часов: " + maker);
     }
 }
 
@@ -25,5 +34,23 @@ class RomeWatch implements Watch {
     @Override
     public void showTime() {
         System.out.println("VII-XX");
+    }
+}
+
+interface WatchMaker {
+    Watch createWatch();
+}
+
+class DigitalWatchMaker implements WatchMaker {
+    @Override
+    public Watch createWatch() {
+        return new DigitalWatch();
+    }
+}
+
+class RomeWatchMaker implements WatchMaker {
+    @Override
+    public Watch createWatch() {
+        return new RomeWatch();
     }
 }
