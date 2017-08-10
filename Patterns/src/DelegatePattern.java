@@ -6,10 +6,10 @@ public class DelegatePattern {
       /*  A a  = new A();
         a.f();*/
       Painter painter = new Painter();
-      painter.setGraphics(new Square());
+      painter.setGraphics(new SquareD());
       painter.draw();
 
-      painter.setGraphics(new Triangle());
+      painter.setGraphics(new TriangleD());
       painter.draw();
     }
 }
@@ -31,21 +31,21 @@ interface Graphics {
     void draw();
 }
 
-class Triangle implements Graphics {
+class TriangleD implements Graphics {
     @Override
     public void draw() {
         System.out.println("Draw a triangle");
     }
 }
 
-class Square implements Graphics {
+class SquareD implements Graphics {
     @Override
     public void draw() {
         System.out.println("Draw a square");
     }
 }
 
-class Circle implements Graphics {
+class CircleD implements Graphics {
     @Override
     public void draw() {
         System.out.println("Draw a circle");
