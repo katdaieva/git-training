@@ -44,7 +44,6 @@ class VectorAdapterFromRaster2 implements VectorGraphicsInterface {
     public VectorAdapterFromRaster2(RasterGraphics raster) {
         this.raster = raster;
     }
-\
     public void drawLine() {
         raster.drawRasterLine();
     }
