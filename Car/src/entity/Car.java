@@ -1,10 +1,10 @@
+package entity;
+
 /**
  * Created by User on 17.08.2017.
  */
 public class Car implements CarForEngineRepairing, CarForUndercarriageRepairing, CarForFueling,
         CarForGlassesCleaning, CarForWheelsPumping{
-//    private String engine;
-//    private String undercarriage;
     private boolean engineState;
     private boolean undercarriageState;
     private boolean tankState;

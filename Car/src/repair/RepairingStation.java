@@ -1,3 +1,8 @@
+package repair;
+
+import entity.CarForEngineRepairing;
+import entity.CarForUndercarriageRepairing;
+
 /**
  * Created by User on 17.08.2017.
  */
