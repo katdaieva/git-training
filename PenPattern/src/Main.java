@@ -6,7 +6,7 @@ public class Main {
         Pen pen = new Pen(Color.RED);
         Paper paper = new Paper("");
 
-        WritingPerson wP = new Human("Isaak", Human.Hand.LEFT);
+        WritingPerson wP = new Human("Isaak", Hand.LEFT);
 
         System.out.println(paper.getText());
 
